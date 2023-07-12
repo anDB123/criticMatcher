@@ -1,3 +1,35 @@
+<div>
+    <input type="text" placeholder="User Name" id="userNameInput">
+    <button (click)="createUser()">Create Account</button>
+</div>
+
+<div><button (click)="getAllCriticsReviews()">Get All Reviews</button></div>
 <input type="text" placeholder="Movie Title" id="movieInput">
 <input type="number" placeholder="score" id="scoreInput">
 <button (click)="addReviewToMongo()">Add review</button>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Number</mat-label>
+        <input type="text" id="movieSelector" placeholder="Pick one" aria-label="Number" matInput
+            [formControl]="myControl" [matAutocomplete]="auto" (input)="findMovie()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+<button (click)="findMovie()">Find Movie</button>
+
+<img id="moviePoster" src="" alt="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png">
+
+<button (click)="findReview()">Find review</button>
+
+<p id="reviewMovieName"></p>
+<p id="reviewText"></p>
+<p id="reviewScore">Score:</p>
+<p id="reviewerName"></p>
+
+<p id="guardianReview"></p>

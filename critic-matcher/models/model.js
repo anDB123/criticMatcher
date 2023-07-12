@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dataSchema = new mongoose.Schema({
+const review = {
     movieName: {
         required: true,
         type: String
@@ -9,6 +9,17 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: Number
     }
-})
+}
 
-module.exports = mongoose.model('Data', dataSchema)
+const UserReviews = new mongoose.Schema({
+    userName: {
+        required: true,
+        type: String
+    },
+    reviews: {
+        required: true,
+        type: Array(review)
+    }
+});
+
+module.exports = mongoose.model('UserReviews', UserReviews)
